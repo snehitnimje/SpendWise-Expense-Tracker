@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 
 // Connect to MongoDB and start server
 mongoose
-  .connect(process.env.MONGO_URI)
+  .connect(process.env.MONGO_URI || "mongodb://127.0.0.1:27017/spendwise")
   .then(() => {
     console.log("MongoDB connected successfully");
 
@@ -35,4 +35,3 @@ mongoose
     console.error("MongoDB connection failed:", error.message);
     process.exit(1);
   });
-
